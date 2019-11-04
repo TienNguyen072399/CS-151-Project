@@ -1,4 +1,8 @@
+import java.awt.*;
 
-public class Symbol {
-
+public interface Symbol 
+{
+	public String getSymbol();
+	
+	public void draw(Graphics2D g2);
 }
