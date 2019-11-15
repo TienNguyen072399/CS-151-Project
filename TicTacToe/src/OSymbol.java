@@ -5,15 +5,15 @@ import java.awt.Graphics2D;
 import javax.swing.Icon;
 import javax.swing.JFrame;
 
-public class XSymbol implements Symbol,Icon
+public class OSymbol implements Symbol,Icon
 {
 	private String symbol;
 	private int width;
 	private int height;
 
-	public XSymbol(int theWidth, int theHeight)
+	public OSymbol(int theWidth, int theHeight)
 	{
-		symbol = "X";
+		symbol = "O";
 		width = theWidth;
 		height = theHeight;
 	}
@@ -42,8 +42,7 @@ public class XSymbol implements Symbol,Icon
 
 	public void draw(Graphics2D g2) 
 	{
-		g2.drawLine(0, 0, width, height);
-		g2.drawLine(width, 0, 0, height);
+		g2.drawOval(10, 5, width, height);
 	
 	}
 	
