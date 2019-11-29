@@ -7,40 +7,82 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class TicTacToe {
+	private static TicTacToeSystem t = new TicTacToeSystem();
+	private static final XSymbol X = new XSymbol(160,160);
+	private static final OSymbol O = new OSymbol(140,140);
+	
+	
+	//When the button gets pressed, it puts in the appropriate symbol and disables the button
+	//and switches the turn
+	public static ActionListener createTicTacButtonListener(int row, int col) {
+		return event -> {
+			JButton source = (JButton) event.getSource();
+			if(t.getTurn() == 1) {
+				source.setIcon(X);
+				t.setGrid(row, col, 1);
+			}
+			else {
+				source.setIcon(O);
+				t.setGrid(row, col, 2);
+			}
+			source.setEnabled(false);
+			int winner = t.checkGrid();
+			
+			if(!t.getGameOver()) {
+				t.switchTurn();
+			}
+			else {
+				System.out.println("Winner is " + winner);
+			}
+			
+		};
+	}
+	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-
 		
 		
-		frame.setLayout(new GridLayout(3,3));
 		
-
-		XSymbol X = new XSymbol(160,160);
-		OSymbol O = new OSymbol(140,140);
+		//JButton 2D Array
+		JButton[][] buttons = new JButton[3][3];
+			
+		//Initializes the buttons in the array and adds their actionlisteners
+		for(int i = 0; i < buttons.length; i++) {
+			for(int j = 0; j < buttons[i].length; j++) {
+				buttons[i][j] = new JButton("" + i + j);
 				
-		JButton button1 = new JButton ();
-		JButton button2 = new JButton (X);
-		JButton button3 = new JButton (O);
-		JButton button4 = new JButton ();
-		JButton button5 = new JButton ();
-		JButton button6 = new JButton (X);
-		JButton button7 = new JButton ();
-		JButton button8 = new JButton ();
-		JButton button9 = new JButton ();
+			
+				
+				buttons[i][j].addActionListener(createTicTacButtonListener(i, j));
+				
+			}
+		}
 
-
+	
+		JPanel gamePanel = new JPanel();
+		gamePanel.setLayout(new GridLayout(3,3));
 		
-		frame.add(button1);
-		frame.add(button2);
-		frame.add(button3);
-		frame.add(button4);
-		frame.add(button5);
-		frame.add(button6);
-		frame.add(button7);
-		frame.add(button8);
-		frame.add(button9);
+		for(int i = 0; i < buttons.length; i++) {
+			for(int j = 0; j < buttons[i].length; j++) {
+				gamePanel.add(buttons[i][j]);
+			}
+		}
 		
-
+		
+		JPanel information = new JPanel();
+		JLabel turn = new JLabel("It is x turn");
+		
+		information.add(turn);
+				
+				
+		frame.setLayout(new BorderLayout());
+		frame.add(information, BorderLayout.NORTH);
+		frame.add(gamePanel, BorderLayout.CENTER);
+		
+		
+		//Adds Buttons to the Frame
+		
+		
 		
 		
 		frame.setPreferredSize(new Dimension(500, 500));
