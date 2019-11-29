@@ -1,18 +1,20 @@
 import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 import javax.swing.*;
 
 public class TicTacToe {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		
-	
+
 		
 		
 		frame.setLayout(new GridLayout(3,3));
 		
+
 		XSymbol X = new XSymbol(160,160);
 		OSymbol O = new OSymbol(140,140);
 				
@@ -38,6 +40,7 @@ public class TicTacToe {
 		frame.add(button8);
 		frame.add(button9);
 		
+
 		
 		
 		frame.setPreferredSize(new Dimension(500, 500));
