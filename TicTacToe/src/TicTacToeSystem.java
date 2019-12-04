@@ -22,6 +22,7 @@ public class TicTacToeSystem {
 		System.out.println("grid[" + row + "][" + col + "] = " + grid[row][col]);
 	}
 	
+	
 	public void switchTurn() {
 		if (turn == XSYMBOL)
 			turn = OSYMBOL;
@@ -31,6 +32,17 @@ public class TicTacToeSystem {
 	
 	public int getTurn() {
 		return turn;
+	}
+	
+	public String getLetterTurn() {
+		if (turn == XSYMBOL)
+		{
+			return "X";
+		}
+		else
+		{
+			return "O";
+		}
 	}
 	
 	public boolean getGameOver() {
@@ -55,6 +67,22 @@ public class TicTacToeSystem {
 		}
 		else if ((grid[2][0] == 1 && grid[1][1] == 1 && grid[0][2] == 1) ||
 				(grid[2][0] == 2 && grid[1][1] == 2 && grid[0][2] == 2)	) {
+			winner = turn;
+		}
+		else if ((grid[1][0] == 1 && grid[1][1] == 1 && grid[1][2] == 1) ||
+				(grid[1][0] == 2 && grid[1][1] == 2 && grid[1][2] == 2)	) {
+			winner = turn;
+		}
+		else if ((grid[0][0] == 1 && grid[1][0] == 1 && grid[2][0] == 1) ||
+				(grid[0][0] == 2 && grid[1][0] == 2 && grid[2][0] == 2)	) {
+			winner = turn;
+		}
+		else if ((grid[0][1] == 1 && grid[1][1] == 1 && grid[2][1] == 1) ||
+				(grid[0][1] == 2 && grid[1][1] == 2 && grid[2][1] == 2)	) {
+			winner = turn;
+		}
+		else if ((grid[0][2] == 1 && grid[1][2] == 1 && grid[2][2] == 1) ||
+				(grid[0][2] == 2 && grid[1][2] == 2 && grid[2][2] == 2)	) {
 			winner = turn;
 		}
 		

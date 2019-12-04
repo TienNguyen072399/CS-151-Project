@@ -10,6 +10,8 @@ public class TicTacToe {
 	private static TicTacToeSystem t = new TicTacToeSystem();
 	private static final XSymbol X = new XSymbol(160,160);
 	private static final OSymbol O = new OSymbol(140,140);
+	private static String player1 = null;
+	private static String player2 = null;
 	
 	
 	//When the button gets pressed, it puts in the appropriate symbol and disables the button
@@ -19,10 +21,12 @@ public class TicTacToe {
 			JButton source = (JButton) event.getSource();
 			if(t.getTurn() == 1) {
 				source.setIcon(X);
+				source.setBackground(Color.black);
 				t.setGrid(row, col, 1);
 			}
 			else {
 				source.setIcon(O);
+				source.setBackground(Color.red);
 				t.setGrid(row, col, 2);
 			}
 			source.setEnabled(false);
@@ -32,11 +36,19 @@ public class TicTacToe {
 				t.switchTurn();
 			}
 			else {
-				System.out.println("Winner is " + winner);
+				if(winner == 1) {
+					//System.out.println("Winner is X");
+					JOptionPane.showMessageDialog(null, player1 + " wins!");
+				}
+				else {
+					//System.out.println("Winner is O");
+					JOptionPane.showMessageDialog(null, player2 + " wins!");
+				}
 			}
 			
 		};
 	}
+	
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
@@ -57,7 +69,10 @@ public class TicTacToe {
 				
 			}
 		}
-
+		
+		JOptionPane.showMessageDialog(null, "Welcome to Tic Tac Toe, first player to get 3 in a row wins!");
+		player1 = JOptionPane.showInputDialog("What is Player's 1 name?");
+		player2 = JOptionPane.showInputDialog("What is Player's 2 name?");
 	
 		JPanel gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(3,3));
@@ -80,13 +95,13 @@ public class TicTacToe {
 		frame.add(gamePanel, BorderLayout.CENTER);
 		
 		
+		
 		//Adds Buttons to the Frame
 		
 		
 		
 		
 		frame.setPreferredSize(new Dimension(500, 500));
-
 
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
