@@ -1,3 +1,5 @@
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -42,8 +44,10 @@ public class XSymbol implements Symbol,Icon
 
 	public void draw(Graphics2D g2) 
 	{
-		g2.drawLine(0, 0, width, height);
-		g2.drawLine(width, 0, 0, height);
+		g2.setColor(Color.RED);
+		g2.setStroke(new BasicStroke(4));
+		g2.drawLine(5, 5, width + 20, height + 5);
+		g2.drawLine(width + 20, 5, 5, height + 2);
 	
 	}
 	
