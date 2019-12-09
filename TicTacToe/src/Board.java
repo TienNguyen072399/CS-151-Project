@@ -25,11 +25,19 @@ public class Board {
 				source.setIcon(X);
 //				source.setBackground(Color.black);
 				ticTacSys.setGrid(row, col, 1);
+				if(ticTacSys.checkTie() == 1)
+				{
+					ticTacSys.setGameOver(true);
+				}
 			}
 			else {
 				source.setIcon(O);
 //				source.setBackground(Color.red);
 				ticTacSys.setGrid(row, col, 2);
+				if(ticTacSys.checkTie() == 1)
+				{
+					ticTacSys.setGameOver(true);
+				}
 			}
 			source.setEnabled(false);
 			int winner = ticTacSys.checkGrid();
@@ -43,9 +51,14 @@ public class Board {
 					JOptionPane.showMessageDialog(null, playerOne + " wins!");
 					restartBoard();
 				}
-				else {
+				else if(winner == 2) {
 					//System.out.println("Winner is O");
 					JOptionPane.showMessageDialog(null, playerTwo + " wins!");
+					restartBoard();
+				}
+				else {
+					//System.out.println("Winner is O");
+					JOptionPane.showMessageDialog(null, "It was a tie!");
 					restartBoard();
 				}
 			}

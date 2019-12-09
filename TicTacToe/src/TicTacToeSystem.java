@@ -58,8 +58,31 @@ public class TicTacToeSystem {
 		this.gameOver = gameOver;
 	}
 	
+	
+	public int checkTie() {
+		int checkAll = 0;
+		for (int row = 0; row <3; row++)
+		{
+			for (int col = 0; col <3; col++)
+			{
+				if (grid[row][col] == 1 || grid[row][col] == 2)
+				{
+					checkAll++;
+				}
+			}
+		}
+		if (checkAll == 9)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	
 	public int checkGrid() {
-		
+				
 		int winner = 0;
 		
 		if ((grid[0][0] == 1 && grid[0][1] == 1 && grid[0][2] == 1) ||
