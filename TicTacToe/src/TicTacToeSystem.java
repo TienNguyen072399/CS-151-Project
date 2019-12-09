@@ -30,8 +30,13 @@ public class TicTacToeSystem {
 			turn = XSYMBOL;
 	}
 	
-	public int getTurn() {
-		return turn;
+	public String getTurn() {
+		if(turn == XSYMBOL) {
+			return "X";
+		}
+		else {
+			return "O";
+		}
 	}
 	
 	public String getLetterTurn() {
@@ -47,6 +52,10 @@ public class TicTacToeSystem {
 	
 	public boolean getGameOver() {
 		return gameOver;
+	}
+	
+	public void setGameOver(Boolean gameOver) {
+		this.gameOver = gameOver;
 	}
 	
 	public int checkGrid() {
@@ -91,6 +100,7 @@ public class TicTacToeSystem {
 			gameOver = true;
 			return winner;
 		}
+		
 		else {
 			return winner;
 		}

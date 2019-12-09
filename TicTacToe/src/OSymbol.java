@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -42,7 +43,10 @@ public class OSymbol implements Symbol,Icon
 
 	public void draw(Graphics2D g2) 
 	{
+		g2.setColor(Color.BLUE);
+		g2.setStroke(new BasicStroke(4));
 		g2.drawOval(10, 5, width, height);
+		
 	
 	}
 	
