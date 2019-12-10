@@ -107,12 +107,8 @@ public class Board {
 			}
 		}
 		
-		JPanel information = new JPanel();
-		JLabel turn = new JLabel("TURN: ");
 		
-		information.add(turn);
 		frame.setLayout(new BorderLayout());
-		frame.add(information, BorderLayout.NORTH);
 		frame.add(gamePanel, BorderLayout.CENTER);
 		
 		
